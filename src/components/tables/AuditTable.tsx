@@ -11,8 +11,8 @@ interface AuditRecord {
   action: string;
   entity: string;
   entityId?: string;
-  beforeJson?: object;
-  afterJson?: object;
+  beforeJson?: unknown;
+  afterJson?: unknown;
   ip?: string;
   at: string;
 }
