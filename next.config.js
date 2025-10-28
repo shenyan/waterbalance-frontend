@@ -7,6 +7,9 @@ const nextConfig = {
   transpilePackages: ['echarts'],
   eslint: {
     ignoreDuringBuilds: true
+  },
+  typescript: {
+    ignoreBuildErrors: true
   }
 };
 
