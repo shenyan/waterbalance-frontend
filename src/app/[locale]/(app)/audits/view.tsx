@@ -35,10 +35,16 @@ const mockAudits = [
 export default function AuditsClient() {
   const [filters, setFilters] = useState<{ user?: string; entity?: string; action?: string }>({});
 
+  const cleanedFilters = {
+    user: filters.user && filters.user.trim() ? Number(filters.user) : undefined,
+    entity: filters.entity,
+    action: filters.action
+  };
+
   const { data, isFetching, isError } = useQuery({
-    queryKey: qk.audits(filters),
+    queryKey: qk.audits(cleanedFilters),
     queryFn: async () => {
-      const response = await pageAudits({ ...filters, page: 0, size: 20 });
+      const response = await pageAudits({ ...cleanedFilters, page: 0, size: 20 });
       if (response.status !== 'OK' || !response.data) throw new Error(response.message ?? '加载失败');
       return response.data;
     },
