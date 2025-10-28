@@ -1,0 +1,13 @@
+{
+  "app": {
+    "title": "Water Balance Platform",
+    "dashboard": "Dashboard",
+    "data": "Data Management",
+    "analysis": "Water Analysis",
+    "correction": "Leakage Correction",
+    "imports": "Import Tasks",
+    "audits": "Audit Logs",
+    "settings": "System Settings",
+    "logout": "Sign out"
+  }
+}

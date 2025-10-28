@@ -1,0 +1,13 @@
+{
+  "app": {
+    "title": "水量平衡平台",
+    "dashboard": "仪表盘",
+    "data": "数据管理",
+    "analysis": "水量分析",
+    "correction": "漏损率修正",
+    "imports": "导入任务",
+    "audits": "审计日志",
+    "settings": "系统配置",
+    "logout": "退出登录"
+  }
+}
