@@ -35,16 +35,16 @@ const mockAudits = [
 export default function AuditsClient() {
   const [filters, setFilters] = useState<{ user?: string; entity?: string; action?: string }>({});
 
-  const cleanedFilters = {
+  const cleaned = {
     user: filters.user && filters.user.trim() ? Number(filters.user) : undefined,
     entity: filters.entity,
     action: filters.action
   };
 
   const { data, isFetching, isError } = useQuery({
-    queryKey: qk.audits(cleanedFilters),
+    queryKey: qk.audits(cleaned),
     queryFn: async () => {
-      const response = await pageAudits({ ...cleanedFilters, page: 0, size: 20 });
+      const response = await pageAudits({ ...cleaned, page: 0, size: 20 });
       if (response.status !== 'OK' || !response.data) throw new Error(response.message ?? '加载失败');
       return response.data;
     },
@@ -56,11 +56,15 @@ export default function AuditsClient() {
     }
   });
 
-  const records = data?.content ?? mockAudits;
+  const records = (data?.content ?? mockAudits).map((record) => ({
+    ...record,
+    beforeJson: record.beforeJson ?? undefined,
+    afterJson: record.afterJson ?? undefined
+  }));
 
   return (
     <div className="space-y-6">
-      <div className="flex flex-wrap items-start justify-between gap-3">
+      <div className="flex flex-wrap items-start justify之间 gap-3">
         <div>
           <h1 className="text-2xl font-semibold text-brand-700">审计日志</h1>
           <p className="text-sm text-muted-foreground">跟踪重要操作，支持按用户、实体、动作筛选。</p>
