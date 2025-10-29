@@ -21,18 +21,18 @@ interface NavSection {
 const sections: NavSection[] = [
   { label: '仪表盘', href: '/' },
   {
+    label: '水量分析',
+    items: [
+      { label: '当前月', href: '/analysis/monthly' },
+      { label: '时间段', href: '/analysis/range' }
+    ]
+  },
+  {
     label: '数据管理',
     items: [
       { label: '类别管理', href: '/data/categories' },
       { label: '子项管理', href: '/data/items' },
       { label: '明细管理', href: '/data/measurements' }
-    ]
-  },
-  {
-    label: '水量分析',
-    items: [
-      { label: '当前月', href: '/analysis/monthly' },
-      { label: '时间段', href: '/analysis/range' }
     ]
   },
   { label: '漏损率修正', href: '/correction' },
